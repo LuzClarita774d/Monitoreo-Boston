@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colegio Boston - Control de Acceso</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+    <div class="login-container">
+        <div class="login-card">
+
+            <h2>COLEGIO BOSTON</h2>
+            <p>Sistema de Monitoreo de Aulas de Cómputo</p>
+
+            <form id="loginForm">
+
+                <!-- CORREO -->
+                <div class="form-group">
+                    <label for="correo">Correo Institucional</label>
+                    <input 
+                        type="email" 
+                        id="correo" 
+                        placeholder="admin@boston.edu.mx"
+                        required 
+                        autocomplete="username">
+                </div>
+
+                <!-- CONTRASEÑA -->
+                <div class="form-group">
+                    <label for="contrasena">Contraseña</label>
+                    <input 
+                        type="password" 
+                        id="contrasena" 
+                        placeholder="••••••••"
+                        required 
+                        autocomplete="current-password">
+                </div>
+
+                <!-- BOTÓN -->
+                <button type="submit" class="btn-boston">
+                    Iniciar Sesión
+                </button>
+
+                <!-- ERROR -->
+                <div 
+                    id="errorMsg" 
+                    class="error-message"
+                    style="color:#d60000; margin-top:10px; display:none;">
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+    <script src="/js/login.js"></script>
+
+</body>
+</html>

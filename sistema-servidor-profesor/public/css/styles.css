@@ -1,0 +1,242 @@
+:root {
+    --azul-boston: #002855;
+    --rojo-boston: #D00000;
+    --gris-fondo: #f4f6f9;
+    --gris-texto: #333333;
+    --blanco: #ffffff;
+    --verde-exito: #28a745;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--gris-fondo);
+    color: var(--gris-texto);
+}
+
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, var(--azul-boston) 60%, var(--rojo-boston) 100%);
+}
+
+.login-card {
+    background: var(--blanco);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.login-card h2 {
+    color: var(--azul-boston);
+    margin-bottom: 0.5rem;
+}
+
+.login-card p {
+    color: #666;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.form-group {
+    text-align: left;
+    margin-bottom: 1.2rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+    color: var(--azul-boston);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    border-color: var(--azul-boston);
+}
+
+.btn-boston {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: var(--azul-boston);
+    color: var(--blanco);
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-boston:hover {
+    background-color: #001f42;
+}
+
+.error-message {
+    color: var(--rojo-boston);
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    display: none;
+}
+
+.admin-layout {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    height: 100vh;
+}
+
+
+.sidebar-profesor {
+    background-color: var(--azul-boston);
+    color: var(--blanco);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right: 5px solid var(--rojo-boston);
+}
+
+.sidebar-profesor h3 {
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--rojo-boston);
+    padding-bottom: 0.5rem;
+    width: 100%;
+    text-align: center;
+}
+
+.info-perfil {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.info-perfil p {
+    margin-bottom: 0.8rem;
+    font-size: 0.95rem;
+}
+
+.info-perfil strong {
+    color: #ffb4b4;
+}
+
+.btn-logout {
+    margin-top: auto;
+    background-color: var(--rojo-boston);
+}
+
+.btn-logout:hover {
+    background-color: #a00000;
+}
+
+/* Columna Derecha: Gestión de Inventario */
+.main-content {
+    padding: 2rem;
+    overflow-y: auto;
+}
+
+.header-admin {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    border-bottom: 3px solid var(--azul-boston);
+    padding-bottom: 0.5rem;
+}
+
+.header-admin h1 {
+    color: var(--azul-boston);
+}
+
+.grid-admin {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+}
+
+.card-panel {
+    background: var(--blanco);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.card-panel h2 {
+    color: var(--azul-boston);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+/* Tablas Administrativas */
+.tabla-boston {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0.5rem;
+}
+
+.tabla-boston th, .tabla-boston td {
+    padding: 0.8rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.tabla-boston th {
+    background-color: var(--azul-boston);
+    color: var(--blanco);
+}
+
+.btn-action {
+    padding: 0.4rem 0.8rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-right: 0.3rem;
+    color: var(--blanco);
+}
+
+.btn-edit { background-color: #ffc107; color: #000; }
+.btn-delete { background-color: var(--rojo-boston); }
+
+
+.modal {
+    display: none; 
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    justify-content: center; align-items: center;
+}
+
+.modal-content {
+    background: var(--blanco);
+    padding: 2rem;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px; right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}

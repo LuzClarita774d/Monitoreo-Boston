@@ -1,0 +1,13 @@
+{
+  "name": "sistema-agente-alumno",
+  "version": "1.0.0",
+  "description": "Agente de monitoreo en segundo plano e intervención para estaciones de alumnos - Colegio Boston",
+  "main": "agente.js",
+  "scripts": {
+    "start": "node agente.js"
+  },
+  "dependencies": {
+    "socket.io-client": "^4.7.5",
+    "sharp": "^0.33.4"
+  }
+}

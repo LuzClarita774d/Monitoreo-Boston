@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colegio Boston - Panel de Administración</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+    <div class="admin-layout">
+        <aside class="sidebar-profesor">
+            <div class="sidebar-header" style="text-align: center; margin-bottom: 2rem;">
+                <h3 style="color: #fff; text-transform: uppercase; letter-spacing: 1px;">Administrador</h3>
+            </div>
+            
+            <div class="info-perfil" id="perfilDocente" style="color: #fff; padding: 1rem; background: rgba(255,255,255,0.1); border-radius: 8px; margin-bottom: 2rem;">
+                <p style="margin: 0.5rem 0;"><strong>Cargando usuario...</strong></p>
+            </div>
+            
+            <button class="btn-boston btn-logout" id="btnLogout" style="width: 100%; background-color: var(--color-rojo); margin-top: auto;">Cerrar Sesión</button>
+        </aside>
+
+        <main class="main-content">
+            <div class="header-admin" style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #eee; padding-bottom: 1rem; margin-bottom: 2rem;">
+                <h1 style="color: var(--color-azul); margin: 0;">Dashboard de Control e Inventario</h1>
+                <span style="font-weight: bold; color: #666; background: #e9ecef; padding: 0.5rem 1rem; border-radius: 20px;">Panel General</span>
+            </div>
+
+            <div class="grid-admin">
+                <section class="card-panel">
+                    <h2 style="color: var(--color-azul); margin-top: 0; margin-bottom: 1.5rem; border-left: 4px solid var(--color-rojo); padding-left: 10px;">Estaciones de Trabajo Registradas</h2>
+                    <div style="overflow-x: auto;">
+                        <table class="tabla-boston">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre del Equipo (PC)</th>
+                                    <th>Estado Inicial</th>
+                                    <th style="text-align: center;">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablaEstaciones">
+                                </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section class="card-panel" style="height: fit-content;">
+                    <h2 style="color: var(--color-azul); margin-top: 0; margin-bottom: 1.5rem; border-left: 4px solid var(--color-rojo); padding-left: 10px;">Agregar Nuevo Equipo</h2>
+                    <form id="formAgregarPC">
+                        <div class="form-group" style="margin-bottom: 1.2rem;">
+                            <label for="nuevoNombrePC" style="display: block; font-weight: bold; margin-bottom: 0.5rem; color: #333;">Identificador / Nombre PC</label>
+                            <input type="text" id="nuevoNombrePC" placeholder="Ej. Computadora 01" style="width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;" required>
+                        </div>
+                        <button type="submit" class="btn-boston" style="width: 100%; background-color: #28a745; font-weight: bold; padding: 0.8rem;">Registrar en BD</button>
+                    </form>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <div class="modal" id="modalEditar" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); align-items: center; justify-content: center;">
+        <div class="modal-content" style="background-color: #fff; padding: 2rem; border-radius: 8px; width: 100%; max-width: 450px; position: relative; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+            <span class="close-modal" id="closeModal" style="position: absolute; top: 10px; right: 15px; font-size: 28px; font-weight: bold; cursor: pointer; color: #aaa;">&times;</span>
+            <h2 style="color: var(--color-azul); margin-top: 0; margin-bottom: 1.5rem;">Modificar Estación</h2>
+            
+            <form id="formEditarPC">
+                <input type="hidden" id="editIdPC">
+                <div class="form-group" style="margin-bottom: 1.5rem;">
+                    <label for="editNombrePC" style="display: block; font-weight: bold; margin-bottom: 0.5rem; color: #333;">Nuevo Nombre de la PC</label>
+                    <input type="text" id="editNombrePC" style="width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;" required>
+                </div>
+                <button type="submit" class="btn-boston" style="width: 100%; font-weight: bold; padding: 0.8rem;">Guardar Cambios</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="/js/admin.js"></script>
+</body>
+</html>
