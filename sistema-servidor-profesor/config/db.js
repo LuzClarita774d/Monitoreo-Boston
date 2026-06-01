@@ -49,7 +49,7 @@ function insertarAdmin() {
                 VALUES (?, ?, ?, ?, ?, ?, ?)
             `, [
                 'admin.boston',
-                '   ',
+                'AdminBoston2026',
                 'Administrador General',
                 'admin@boston.edu.mx',
                 'Secundaria / Bachillerato',
