@@ -6,12 +6,17 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
+        console.log('Formulario enviado');
+
         const correo = document.getElementById('correo').value;
         const password = document.getElementById('contrasena').value;
 
         errorMsg.style.display = 'none';
 
         try {
+
+            console.log('Enviando petición...');
+
             const response = await fetch('/api/auth/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -19,6 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             const data = await response.json();
+
+            console.log('Respuesta servidor:', data);
 
             if (data.success) {
 
@@ -36,8 +43,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
         } catch (error) {
+            console.error(error);
+
             errorMsg.innerText = 'Error de conexión con el servidor';
             errorMsg.style.display = 'block';
         }
     });
+
 });

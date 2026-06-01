@@ -11,6 +11,9 @@ exports.login = (req, res) => {
         });
     }
 
+    console.log('Correo recibido:', correo);
+    console.log('Password recibido:', password);
+
     const query = `
         SELECT id, nombre, correo, nivel_educativo, materia, rol
         FROM usuarios
@@ -18,6 +21,8 @@ exports.login = (req, res) => {
     `;
 
     db.get(query, [correo, password], (err, row) => {
+
+        console.log('Resultado SQL:', row);
 
         if (err) {
             console.error(err.message);

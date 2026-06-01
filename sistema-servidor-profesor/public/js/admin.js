@@ -1,24 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    const user = JSON.parse(localStorage.getItem('userBoston'));
+    const user = JSON.parse(localStorage.getItem('user'));
+
     if (!user || user.rol !== 'admin') {
-        window.location.href = 'login.html';
+        window.location.href = '/';
         return;
     }
 
-    
     const perfilDocente = document.getElementById('perfilDocente');
+    
     perfilDocente.innerHTML = `
-        <p><strong>Nombre:</strong> <br>${user.nombre}</p>
-        <p><strong>Correo:</strong> <br>${user.correo}</p>
-        <p><strong>Nivel:</strong> <br>${user.nivelEducativo || 'N/A'}</p>
-        <p><strong>Materia:</strong> <br>${user.materia || 'Sistemas'}</p>
+        <p><strong>Nombre:</strong><br>${user.nombre}</p>
+        <p><strong>Correo:</strong><br>${user.correo}</p>
+        <p><strong>Nivel:</strong><br>${user.nivel_educativo || 'N/A'}</p>
+        <p><strong>Materia:</strong><br>${user.materia || 'Sistemas'}</p>
     `;
 
 
-    document.getElementById('btnLogout').addEventListener('click', () => {
-        localStorage.removeItem('userBoston');
-        window.location.href = 'login.html';
+     document.getElementById('btnLogout').addEventListener('click', () => {
+        localStorage.removeItem('user');
+        window.location.href = '/';
     });
 
     const tablaEstaciones = document.getElementById('tablaEstaciones');
@@ -41,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
             result.data.forEach(pc => {
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
-                    <td>${pc.id}</td>
+                    <td>${pc.id}</td>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
                     <td><strong>${pc.nombre_pc}</strong></td>
                     <td><span style="color: gray;">${pc.estado}</span></td>
                     <td>
