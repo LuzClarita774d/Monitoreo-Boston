@@ -2,23 +2,50 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Monitoreo Boston</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitoreo Boston - Verificando...</title>
 </head>
-<body>
+<body style="display:flex;justify-content:center;align-items:center;height:100vh;font-family:sans-serif;background-color:#f4f6f9;margin:0;">
+
+    <div style="text-align:center;">
+        <h2 style="color:#152644;margin-bottom:10px;">COLEGIO BOSTON</h2>
+        <p style="color:#666;">Verificando el estado de la sesión...</p>
+    </div>
 
 <script>
-   
-    const user = JSON.parse(localStorage.getItem("user"));
+    async function verificarSesion() {
+        try {
+            const res = await fetch('/api/auth/verify');
+            const data = await res.json();
 
-    if (!user) {
-        window.location.href = "/login.html";
-    } else {
-        if (user.rol === "admin") {
-            window.location.href = "/admin";
-        } else {
-            window.location.href = "/panelgeneral";
+            // Si el servidor dice que NO hay sesión activa, al Login de golpe
+            if (!data.success) {
+                window.location.href = '/login.html';
+                return;
+            }
+
+            // Si SÍ hay sesión, lo mandamos a su panel correspondiente
+            if (data.user.rol === 'admin') {
+                window.location.href = '/adminviews';
+                return;
+            }
+
+            if (data.user.rol === 'docente') {
+                window.location.href = '/panelviews';
+                return;
+            }
+
+            // Por seguridad, si el rol no coincide con ninguno
+            window.location.href = '/login.html';
+
+        } catch (error) {
+            console.error('Error al verificar sesión:', error);
+            window.location.href = '/login.html';
         }
     }
+
+    // Ejecutar de inmediato al cargar la página
+    verificarSesion();
 </script>
 
 </body>

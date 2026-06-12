@@ -1,53 +1,83 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     const form = document.getElementById('loginForm');
-    const errorMsg = document.getElementById('errorMsg');
 
     form.addEventListener('submit', async (e) => {
+
         e.preventDefault();
 
-        console.log('Formulario enviado');
-
-        const correo = document.getElementById('correo').value;
-        const password = document.getElementById('contrasena').value;
-
-        errorMsg.style.display = 'none';
+        const correo = document.getElementById('correo').value.trim();
+        const password = document.getElementById('contrasena').value.trim(); 
 
         try {
 
-            console.log('Enviando petición...');
-
             const response = await fetch('/api/auth/login', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ correo, password })
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    correo,
+                    password
+                })
             });
 
             const data = await response.json();
 
-            console.log('Respuesta servidor:', data);
+            if (!data.success) {
 
-            if (data.success) {
+                if (data.type === 'correo') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Correo incorrecto',
+                        text: 'El correo ingresado no existe.'
+                    });
+                    return;
+                }
 
-                localStorage.setItem('user', JSON.stringify(data.user));
+                if (data.type === 'password') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Contraseña incorrecta',
+                        text: 'La contraseña ingresada no es válida.'
+                    });
+                    return;
+                }
+
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Datos incompletos',
+                    text: data.message
+                });
+
+                return;
+            }
+
+            Swal.fire({
+                icon: 'success',
+                title: 'Bienvenido',
+                text: `Hola ${data.user.nombre}`
+            }).then(() => {
 
                 if (data.user.rol === 'admin') {
                     window.location.href = '/admin';
-                } else {
+                }
+
+                if (data.user.rol === 'docente') {
                     window.location.href = '/panel';
                 }
 
-            } else {
-                errorMsg.innerText = data.message;
-                errorMsg.style.display = 'block';
-            }
+            });
 
         } catch (error) {
+
             console.error(error);
 
-            errorMsg.innerText = 'Error de conexión con el servidor';
-            errorMsg.style.display = 'block';
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No fue posible conectar con el servidor.'
+            });
         }
     });
-
 });

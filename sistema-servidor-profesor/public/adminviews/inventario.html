@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Inventario</title>
+
+    <link rel="stylesheet" href="../css/inventario.css">
+
+    <link rel="stylesheet"
+        href="https://cdn.datatables.net/1.13.8/css/jquery.dataTables.min.css">
+
+</head>
+
+<body>
+
+    <div id="sidebar-container"></div>
+
+    <main class="contenido">
+
+        <header>
+
+            <button id="btnMenu">
+                ☰
+            </button>
+
+            <img src="../imagenes/imagen.svg">
+
+            <h1>Dashboard de Control e Inventario</h1>
+
+        </header>
+
+        <section class="tabla-contenedor">
+
+            <table id="tablaInventario">
+
+                <thead>
+
+                    <tr>
+
+                        <th>ID</th>
+                        <th>Numero PC</th>
+                        <th>Estado</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody></tbody>
+
+            </table>
+
+        </section>
+
+        <aside class="formulario">
+
+            <h3>Agregar Nuevo Equipo</h3>
+
+            <input
+                type="text"
+                id="numero_pc"
+                placeholder="PC-001">
+
+            <button id="btnRegistrar">
+                Registrar
+            </button>
+
+        </aside>
+
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
+
+    <script src="../js/inventario.js"></script>
+
+</body>
+
+</html>
